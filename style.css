@@ -1,0 +1,36 @@
+body {
+    margin: 0px;
+}
+
+#first {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    text-align: center;
+    font-size: 25px;
+}
+
+#second{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    text-align: center;
+    font-size: 25px;
+}
+
+#time{
+    text-align: center
+}
+
+#title {
+    font-size: 70px;
+}
+
+#startbutton {
+    font-size: 50px;
+
+}

@@ -6,8 +6,8 @@ const time = document.getElementById("time")
 const inputBox = document.getElementById("inputBox")
 const inputForm = document.getElementById("inputForm")
 const result = document.getElementById("result")
-const questionList = ["피카츄가 담배를 피기 전에 하는 말?", "우유가 아프면 뭐라고 할까?", "소가 불에 타면 뭘까?", "완전 야한 가수는?", "서울에 사는 거지 이름은?", "엄마가 길을 잃었다면?", "왕과 작별인사를 할 때 하는 말은?", "왕이 담배를 피우면?", "커플이 좋아하는 곤충은 뭘까?", "햄버거 색깔은?"]
-const answerList = ["피까", "앙팡", "탄소", "다비치", "설거지", "맘마미아", "바이킹", "스모킹", "잠자리", "버건디"]
+const questionList = ["피카츄가 담배를 피기 전에 하는 말?", "우유가 아프면 뭐라고 할까?", "소가 불에 타면 뭘까?", "바람이 귀엽게 부는 곳은?", "서울에 사는 거지 이름은?", "엄마가 길을 잃었다면?", "왕과 작별인사를 할 때 하는 말은?", "왕이 담배를 피우면?", "왕이 넘어지면?", "햄버거 색깔은?"]
+const answerList = ["피까", "앙팡", "탄소", "분당", "설거지", "맘마미아", "바이킹", "스모킹", "킹콩", "버건디"]
 let questionOrder = []
 const questionListSize = 10 //문제수 바뀌면 수정해야함
 let questionNumber = -1
@@ -16,6 +16,29 @@ let answerCounter = 0
 let n = 0
 let timecounterOriginal = 15 // 문제 제한시간 수정가능
 let timecounter = timecounterOriginal
+
+function gamestart(event) {
+    event.target.parentNode.style.display = "none"
+    second.style.display = "block"
+
+    for (let i = 0; i < questionListSize; i++) {
+        while (1) {
+            let num = Math.floor(Math.random() * 10)
+            if (questionOrder.includes(num)) {
+                continue
+            }
+            else {
+                questionOrder.push(num)
+                break
+            }
+        }
+    }
+    nextQuestion(questionOrder[questionNumber + 1])
+    timecounter = timecounterOriginal
+    time.innerText = timecounter + "초"
+    h = setInterval(timeMinus, 1000)
+    a = setInterval(timecheck, 100)
+}
 
 function timecheck() {
     if (timecounter == 0) {
@@ -37,44 +60,22 @@ function nextQuestion(number) {
 
     if (questionNumber == questionListSize) {
         finish()
-
     }
     else {
-        question.innerText = questionNumber + 1 + "." + questionList[questionOrder[number]]
-        console.log(questionNumber + 1 + "." + questionList[questionOrder[number]])
-        num.innerText = answerList[questionOrder[number]].length + "자리"
+        question.innerText = questionNumber + 1 + "." + questionList[questionOrder[questionNumber]]
+        num.innerText = answerList[questionOrder[questionNumber]].length + "자리"
     }
 }
+
 let h;
 let a;
-function gamestart(event) {
-    event.target.parentNode.style.display = "none"
-    second.style.display = "block"
-    for (let i = 0; i < questionListSize; i++) {
-        while (1) {
-            let num = Math.floor(Math.random() * 10)
-            if (questionOrder.includes(num)) {
-                continue
-            }
-            else {
-                questionOrder.push(num)
-                break
-            }
-        }
-    }
-
-    nextQuestion(questionOrder[0])
-    timecounter = timecounterOriginal
-    time.innerText = timecounter + "초"
-    h = setInterval(timeMinus, 1000)
-    a = setInterval(timecheck, 1)
-}
 
 function scan(event) {
     event.preventDefault()
-    if (inputBox.value == answerList[questionNumber]) {
+    if (inputBox.value == answerList[questionOrder[questionNumber]]) {
         answerCounter++
-        nextQuestion(questionNumber + 1)
+        nextQuestion(questionOrder[questionNumber + 1])
+        timecounter = timecounterOriginal
     }
     inputBox.value = ""
 }

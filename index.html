@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div id="first">
+    <div id="first" style="display: block;">
         <h1 id="title">아재력 테스트</h1>
         <button id="startbutton">start</button>
         <p>제작 : 김민규</p>
@@ -19,9 +19,15 @@
     <div id="second" style="display: none">
         <h1 id="question">문제</h1>
         <p id="num">글자수</p>
-        <input autofocus id="inputBox" type="text" placeholder="정답을 입력하세요">
+        <form id="inputForm">
+            <input autofocus id="inputBox" type="text" placeholder="정답을 입력하세요">
+        </form>
         <p id="time">제한시간</p>
         
+    </div>
+
+    <div id="third" style="display: none">
+        <h1 id="result">당신은 몇%아재시군요</h1>
     </div>
     <script src="./app.js"></script>
 </body>

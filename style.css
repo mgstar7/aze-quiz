@@ -2,17 +2,7 @@ body {
     margin: 0px;
 }
 
-#first {
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    text-align: center;
-    font-size: 25px;
-}
-
-#second{
+div{
     justify-content: center;
     align-items: center;
     display: flex;

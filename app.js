@@ -14,7 +14,7 @@ let questionNumber = -1
 let answerCounter = 0
 
 let n = 0
-let timecounterOriginal = 1 // 문제 제한시간 수정가능
+let timecounterOriginal = 15 // 문제 제한시간 수정가능
 let timecounter = timecounterOriginal
 
 function timecheck() {

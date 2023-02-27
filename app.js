@@ -41,7 +41,7 @@ function gamestart(event) {
 }
 
 function timecheck() {
-    if (timecounter == 0) {
+    if (timecounter <= 0) {
         timecounter = timecounterOriginal
         time.innerText = timecounter + "초"
         nextQuestion(questionOrder[questionNumber + 1])
@@ -76,6 +76,11 @@ function scan(event) {
         answerCounter++
         nextQuestion(questionOrder[questionNumber + 1])
         timecounter = timecounterOriginal
+        time.innerText="맞았습니다"
+    }
+    else if(inputBox.value != answerList[questionOrder[questionNumber]]){
+        time.innerText="틀렸습니다 시간이 2초 줄어듭니다"
+        timecounter-=2
     }
     inputBox.value = ""
 }

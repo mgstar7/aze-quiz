@@ -88,7 +88,7 @@ function scan(event) {
 function finish() {
     clearInterval(h)
     clearInterval(a)
-    result.innerText = "당신은 " + answerCounter / questionListSize * 100 + "% 아재시군요!"
+    result.innerText = "당신의 아재력은 " + answerCounter / questionListSize * 100 + "% 이군요!"
     first.style.display = "none"
     second.style.display = "none"
     third.style.display = "block"
